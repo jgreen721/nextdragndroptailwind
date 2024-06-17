@@ -1,6 +1,6 @@
 "use client"
 import React, {useState} from "react"
-import {Nav,Destinations,AnimatedDestinations,Overlay} from "@/components"
+import {Nav,Destinations,AnimatedDestinations} from "@/components"
 import {motion} from "framer-motion"
 import { blurFadeIn, initialBlurFadeIn } from "@/animations"
 
