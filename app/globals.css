@@ -3,31 +3,70 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --black: rgb(5, 5, 10);
+  --offblack: rgb(40, 35, 40);
+  --white: rgb(245, 250, 245);
+  --offwhite: rgb(200, 215, 215);
+  --activeblack: rgb(15, 15, 15);
+  --activewhite: rgb(185, 185, 195);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+#main[data-theme="light"] {
+  --mainBg: var(--white);
+  --cardBg: var(--offwhite);
+  --activeCardBg: var(--activewhite);
+  --mainColor: var(--black);
+  --secondaryColor: var(--offblack);
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+#main[data-theme="dark"] {
+  --mainBg: var(--black);
+  --cardBg: var(--offblack);
+  --activeCardBg: var(--activeblack);
+
+  --mainColor: var(--white);
+  --secondaryColor: var(--offwhite);
 }
+/* 
+main {
+  background: var(--mainBg);
+  color: var(--mainColor);
+} */
+
+/* body {
+  background: var(--offblack);
+} */
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .underline-clip {
+    clip-path: polygon(0 7%, 100% 0%, 100% 64%, 0 95%);
+    transform-origin: left;
+    transform: scale(0);
+    animation: growline 1s forwards;
+  }
+
+  @keyframes growline {
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-item-card {
+    top: var(--i);
+    transition: 500ms ease;
+    /* border: 2px solid red; */
+    animation: dropcards 2s;
+  }
+
+  @keyframes dropcards {
+    0% {
+      top: 0;
+    }
+    100% {
+      top: 1;
+    }
   }
 }
